@@ -19,6 +19,7 @@ class PricesTest < ApplicationSystemTestCase
     fill_in "Highest price", with: @price.highest_price
     fill_in "Lowest price", with: @price.lowest_price
     fill_in "Open price", with: @price.open_price
+    fill_in "Ticket", with: @price.ticket_id
     fill_in "Volume", with: @price.volume
     click_on "Create Price"
 
@@ -35,6 +36,7 @@ class PricesTest < ApplicationSystemTestCase
     fill_in "Highest price", with: @price.highest_price
     fill_in "Lowest price", with: @price.lowest_price
     fill_in "Open price", with: @price.open_price
+    fill_in "Ticket", with: @price.ticket_id
     fill_in "Volume", with: @price.volume
     click_on "Update Price"
 

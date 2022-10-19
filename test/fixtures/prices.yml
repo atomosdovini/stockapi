@@ -6,7 +6,8 @@ one:
   lowest_price: 9.99
   volume: 9.99
   close_price: 9.99
-  date: 2022-10-16
+  date: 2022-10-18
+  ticket_id: 1
 
 two:
   open_price: 9.99
@@ -14,4 +15,5 @@ two:
   lowest_price: 9.99
   volume: 9.99
   close_price: 9.99
-  date: 2022-10-16
+  date: 2022-10-18
+  ticket_id: 1

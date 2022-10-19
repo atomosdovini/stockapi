@@ -17,7 +17,7 @@ class PricesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create price" do
     assert_difference('Price.count') do
-      post prices_url, params: { price: { close_price: @price.close_price, date: @price.date, highest_price: @price.highest_price, lowest_price: @price.lowest_price, open_price: @price.open_price, volume: @price.volume } }
+      post prices_url, params: { price: { close_price: @price.close_price, date: @price.date, highest_price: @price.highest_price, lowest_price: @price.lowest_price, open_price: @price.open_price, ticket_id: @price.ticket_id, volume: @price.volume } }
     end
 
     assert_redirected_to price_url(Price.last)
@@ -34,7 +34,7 @@ class PricesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update price" do
-    patch price_url(@price), params: { price: { close_price: @price.close_price, date: @price.date, highest_price: @price.highest_price, lowest_price: @price.lowest_price, open_price: @price.open_price, volume: @price.volume } }
+    patch price_url(@price), params: { price: { close_price: @price.close_price, date: @price.date, highest_price: @price.highest_price, lowest_price: @price.lowest_price, open_price: @price.open_price, ticket_id: @price.ticket_id, volume: @price.volume } }
     assert_redirected_to price_url(@price)
   end
 
