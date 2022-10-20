@@ -1,24 +1,38 @@
-# README
+# StockAPi, from CSV
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+CSV com ações estão em 'db/stocks', checar initializer 'config/initializers/stocks_seed.rb'.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
+Dois modelos na DB:
+    * Modelo Price
+    * Modelo Ticket
 
 * Configuration
+Run:
+    docker compose run web rake db:create
+    docker compose build
+    docker compose up
 
-* Database creation
+* Teste filtro Por Ação e Data
+    docker compose run web bundle exec rspec ./spec/requests/prices_spec.rb
 
-* Database initialization
+* API methods:
 
-* How to run the test suite
+    -Filtrar Preço por Ação e Data
+        Method: POST
+        url: localhost:3000/prices/ticket
+        json content:{
+        "ticket_name": "MGLU3.SA",
+        "date":"2011-05-02"
+        }
 
-* Services (job queues, cache servers, search engines, etc.)
+    -Get nas ações
+        Method: GET
+        url: 'localhost:3000/tickets'
 
-* Deployment instructions
+    -Deletar price
+        Method: DELETE
+        url:'localhost:3000/prices/:id'
 
-* ...
+    -Deletar ticket(deleta os valore na tabela price relacionados a esse ticket)
+        Method: DELETE
+        url:'localhost:3000/ticket/:id'
