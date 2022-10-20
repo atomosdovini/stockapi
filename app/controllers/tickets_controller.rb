@@ -20,7 +20,29 @@ class TicketsController < ApplicationController
   # GET /tickets/1/edit
   def edit
   end
+  
+  def destroy
 
+    @ticket.destroy
+    @prices = Price.where("ticket_id = ?",params[:id])
+    @prices.delete_all
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_ticket
+      @ticket = Ticket.find(params[:id])
+      puts @ticket.inspect
+      puts 'tjos is es o tiecktet'
+    end
+
+    # Only allow a list of trusted parameters through.
+    def ticket_params
+      params.require(:ticket).permit(:name)
+    end
 #   # POST /tickets or /tickets.json
 #   def create
 #     @ticket = Ticket.new(ticket_params)
@@ -45,26 +67,5 @@ class TicketsController < ApplicationController
 #   end
 
   # DELETE /tickets/1 or /tickets/1.json
-  def destroy
 
-    @ticket.destroy
-    @prices = Price.where("ticket_id = ?",params[:id])
-    @prices.delete_all
-    respond_to do |format|
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ticket
-      @ticket = Ticket.find(params[:id])
-      puts @ticket.inspect
-      puts 'tjos is es o tiecktet'
-    end
-
-    # Only allow a list of trusted parameters through.
-    def ticket_params
-      params.require(:ticket).permit(:name)
-    end
 end
